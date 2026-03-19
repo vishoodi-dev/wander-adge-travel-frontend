@@ -19,11 +19,12 @@ const initialValues: FormValues = {
   message: '',
 };
 
+
 function ContactSection() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  //const [isSubmitting, setIsSubmitting] = useState(false);
+  //const [submitMessage, setSubmitMessage] = useState('');
 
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -93,7 +94,7 @@ function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitMessage('');
+    //setSubmitMessage('');
 
     const validationErrors = validate();
     setErrors(validationErrors);
@@ -104,16 +105,16 @@ function ContactSection() {
     }
 
     try {
-      setIsSubmitting(true);
+      //setIsSubmitting(true);
 
       await fakeSubmit(values);
 
-      setSubmitMessage('Your message has been sent successfully.');
+    //setSubmitMessage('Your message has been sent successfully.');
       setValues(initialValues);
     } catch {
-      setSubmitMessage('Something went wrong. Please try again.');
+      //setSubmitMessage('Something went wrong. Please try again.');
     } finally {
-      setIsSubmitting(false);
+      //setIsSubmitting(false);
     }
   };
 
