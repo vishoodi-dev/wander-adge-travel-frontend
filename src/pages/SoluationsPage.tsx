@@ -3,7 +3,7 @@ function SoluationsPage() {
     <div>
       Soluations Page
     </div>
-  )
+  ) 
 }
 
 export default SoluationsPage
