@@ -43,7 +43,6 @@ Instead of building a static page, I approached this as a **production-ready fro
 - **TypeScript**
 - **CSS / Tailwind / CSS Modules**
 - **React Hook Form** – form handling
-- **Zod** – schema validation
 - **Vitest + React Testing Library** – testing
 - **GitHub Actions** – CI pipeline
 - **Docker**
@@ -53,27 +52,48 @@ Instead of building a static page, I approached this as a **production-ready fro
 ## 📂 Project Structure
 
 ```
-src/
-  components/
-    layout/
-      Header.tsx
-      Footer.tsx
-      Container.tsx
-    sections/
-      HeroSection.tsx
-      FeaturesSection.tsx
-      PromoSection.tsx
-      ContactSection.tsx
-    ui/
-      Button.tsx
-      Input.tsx
-      TextArea.tsx
-      Card.tsx
-  data/
-    content.ts
-  hooks/
-  utils/
-  App.tsx
+servicehub-fe/
+│
+├── public/                 # Static assets (favicon, images, etc.)
+│
+├── src/
+│   ├── assets/             # Images, icons, fonts
+│   ├── components/         # Reusable UI components
+│   │   ├── ui/             # Generic UI (Button, Input, Modal)
+│   │   └── layout/         # Layout components (Header, Footer)
+│   │
+│   ├── features/           # Feature-based modules (scalable architecture)
+│   │   └── contact/
+│   │       ├── components/ # Feature-specific components
+│   │       ├── hooks/      # Custom hooks
+│   │       ├── api/        # API calls
+│   │       ├── types.ts    # Types
+│   │       └── index.ts
+│   │
+│   ├── pages/              # Route-level pages
+│   │   ├── Home.tsx
+│   │   └── Contact.tsx
+│   │
+│   ├── hooks/              # Global reusable hooks
+│   ├── utils/              # Helper functions
+│   ├── lib/                # External configs (axios, msw, etc.)
+│   ├── constants/          # App constants
+│   ├── types/              # Global TypeScript types
+│   │
+│   ├── routes/             # React Router setup
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── tests/                  # Test setup & global tests
+│
+├── .github/
+│   └── workflows/          # CI/CD pipelines
+│
+├── Dockerfile              # Container setup
+├── nginx.conf              # Production server config
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
 ---
