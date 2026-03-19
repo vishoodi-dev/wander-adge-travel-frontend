@@ -1,6 +1,19 @@
-import { FaSearch } from "react-icons/fa";
-import logo from "../../assets/logo.png";
-import SocialMediaBtn from "./SocialMediaBtn";
+import { FaSearch } from 'react-icons/fa';
+import logo from '../../assets/logo.png';
+import SocialMediaBtn from './SocialMediaBtn';
+import { NavLink } from 'react-router-dom';
+
+const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Solutions', path: '/solutions' },
+  { label: 'Get Started', path: '/get-started' },
+  { label: 'Research', path: '/research' },
+  { label: 'Reports', path: '/reports' },
+  { label: 'Branches', path: '/branches' },
+  { label: 'FAQ', path: '/faq' },
+  { label: 'Contact', path: '/contact' },
+];
 
 export default function Header() {
   return (
@@ -22,39 +35,20 @@ export default function Header() {
             </div>
           </div>
 
-          <nav className="overflow-x-auto">
-            <div className="flex justify-around min-w-max gap-7 pb-1 text-[15px] font-medium text-black/75">
-              <a
-                href="#home"
-                className="border-b-2 border-[#7fbe6d] pb-1 text-[#5b9b4e]"
+          <nav className="flex justify-around min-w-max gap-7 pb-1 text-[15px] font-medium text-black/75">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition ${
+                    isActive ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                  }`
+                }
               >
-                Home
-              </a>
-              <a href="#about" className="pb-1 transition hover:text-black">
-                About
-              </a>
-              <a href="#solutions" className="pb-1 transition hover:text-black">
-                Solutions
-              </a>
-              <a href="#get-started" className="pb-1 transition hover:text-black">
-                Get Started
-              </a>
-              <a href="#research" className="pb-1 transition hover:text-black">
-                Research
-              </a>
-              <a href="#reports" className="pb-1 transition hover:text-black">
-                Reports
-              </a>
-              <a href="#branches" className="pb-1 transition hover:text-black">
-                Branches
-              </a>
-              <a href="#faq" className="pb-1 transition hover:text-black">
-                FAQ
-              </a>
-              <a href="#contact" className="pb-1 transition hover:text-black">
-                Contact Us
-              </a>
-            </div>
+                {item.label}
+              </NavLink>
+            ))}
           </nav>
         </div>
       </div>

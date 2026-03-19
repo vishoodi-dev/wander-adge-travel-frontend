@@ -1,5 +1,6 @@
 import hero from '../assets/hero.png';
-import { IoIosArrowDroprightCircle } from 'react-icons/io';
+
+import Button from '../componets/ui/Button';
 
 function HeroSection() {
   return (
@@ -18,10 +19,7 @@ function HeroSection() {
           <h1 className="mt-6 max-w-2xl leading-tight lg:leading-[1.12]">
             Explore breathtaking trails and find your peace outdoors
           </h1>
-          <button className="mt-8 inline-flex items-center gap-4 bg-white px-5 py-3 text-sm font-medium uppercase tracking-wide text-[#567e54] shadow-sm transition hover:bg-[#f7f7f7] sm:px-6">
-            <span>Start Today</span>
-            <IoIosArrowDroprightCircle size={30} />
-          </button>
+          <Button text="Start Today" />
         </div>
       </div>
     </div>

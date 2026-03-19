@@ -1,5 +1,5 @@
+import Button from '../componets/ui/Button';
 import { features } from '../data/content';
-import { IoIosArrowDroprightCircle } from 'react-icons/io';
 
 const Featuresection = () => {
   return (
@@ -11,7 +11,7 @@ const Featuresection = () => {
               {features.map((feature, index) => (
                 <article
                   key={`${feature.title}-${index}`}
-                  className="flex w-[520px] shrink-0 overflow-hidden rounded-sm border border-black/10 bg-white shadow-sm h-[200px]"
+                  className="flex w-[520px] shrink-0 overflow-hidden rounded-sm border border-black/10 bg-white shadow-sm h-[250px]"
                 >
                   <div className="w-[180px] shrink-0 sm:w-[190px]">
                     <img
@@ -28,11 +28,7 @@ const Featuresection = () => {
                       </h3>
                       <p className="mt-2 text-[16px] leading-8 text-black/65">{feature.text}</p>
                     </div>
-
-                    <button className="mt-4 inline-flex items-center justify-end gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#4e8550]">
-                      <span>View More</span>
-                      <IoIosArrowDroprightCircle size={30} />
-                    </button>
+                    <Button text="VIEW MORE" />
                   </div>
                 </article>
               ))}

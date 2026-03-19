@@ -1,4 +1,4 @@
-import { IoIosArrowDroprightCircle } from 'react-icons/io';
+import Button from '../componets/ui/Button';
 function PromoSection() {
   return (
     <section
@@ -28,11 +28,7 @@ function PromoSection() {
             more connected — inside and out.
           </p>
         </div>
-
-        <button className="mt-4 inline-flex items-center justify-end gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#4e8550]">
-          <span>View More</span>
-          <IoIosArrowDroprightCircle size={30} />
-        </button>
+        <Button text="VIEW MORE" />
       </div>
     </section>
   );
