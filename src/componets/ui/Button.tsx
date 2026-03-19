@@ -1,30 +1,16 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { IoIosArrowDroprightCircle } from 'react-icons/io';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
-  variant?: "solid" | "outline";
-  fullWidth?: boolean;
+type ButtonProps = {
+  text: string;
 };
 
-export default function Button({
-  children,
-  variant = "solid",
-  fullWidth = false,
-  className = "",
-  ...props
-}: ButtonProps) {
-  const base = "rounded-full px-6 py-3 text-sm font-medium transition";
-  const styles =
-    variant === "outline"
-      ? "border border-[#334d2f] text-[#334d2f] hover:bg-[#334d2f] hover:text-white"
-      : "bg-[#334d2f] text-white hover:opacity-90";
-
+function Button({ text }: ButtonProps) {
   return (
-    <button
-      className={`${base} ${styles} ${fullWidth ? "w-full" : ""} ${className}`}
-      {...props}
-    >
-      {children}
+    <button className="mt-8 inline-flex items-center gap-4 bg-white px-5 py-3 text-sm font-medium uppercase tracking-wide text-[#567e54] shadow-sm transition hover:bg-[#f7f7f7] sm:px-6">
+      <span>{text}</span>
+      <IoIosArrowDroprightCircle size={30} />
     </button>
   );
 }
+
+export default Button;

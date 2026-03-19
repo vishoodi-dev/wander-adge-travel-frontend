@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainLayout from "../componets/layout/MainLayout";
 import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
 import SoluationsPage from "../pages/SoluationsPage";
@@ -9,20 +10,53 @@ import BranchesPage from "../pages/BranchesPage";
 import FAQPage from "../pages/FAQPage";
 import ContactUsPage from "../pages/ContactUsPage";
 
-export default function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/solutions" element={<SoluationsPage />} />
-        <Route path="/get-started" element={<GetStartedPage />} />
-        <Route path="/research" element={<ResearchPage />} />
-        <Route path="/reports" element={<ReportsPage />} />
-        <Route path="/branches" element={<BranchesPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/contact-us" element={<ContactUsPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
+      },
+      {
+        path: "solutions",
+        element: <SoluationsPage />,
+      },
+      {
+        path: "get-started",
+        element: <GetStartedPage />,
+      },
+      {
+        path: "research",
+        element: <ResearchPage />,
+      },
+      {
+        path: "reports",
+        element: <ReportsPage />,
+      },
+      {
+        path: "branches",
+        element: <BranchesPage />,
+      },
+      {
+        path: "faq",
+        element: <FAQPage />,
+      },
+      {
+        path: "contact",
+        element: <ContactUsPage />,
+      },
+    ],
+  },
+]);
+
+function AppRouter() {
+  return <RouterProvider router={router} />;
 }
+
+export default AppRouter;
