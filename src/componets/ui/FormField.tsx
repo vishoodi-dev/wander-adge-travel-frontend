@@ -1,4 +1,4 @@
-import type { ChangeEvent, RefObject } from 'react';
+import { forwardRef, type ChangeEvent } from 'react';
 import ErrorMsg from './ErrorMsg';
 
 type BaseProps = {
@@ -14,54 +14,56 @@ type BaseProps = {
 type InputFieldProps = BaseProps & {
   as?: 'input';
   type?: string;
-  inputRef?: RefObject<HTMLInputElement | null>;
 };
 
 type TextareaFieldProps = BaseProps & {
   as: 'textarea';
   rows?: number;
-  inputRef?: RefObject<HTMLTextAreaElement | null>;
 };
 
 type FormFieldProps = InputFieldProps | TextareaFieldProps;
 
-function FormField(props: FormFieldProps) {
-  const { id, name, value, placeholder, error, onChange, className } = props;
-  const errorId = `${id}-error`;
+const FormField = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormFieldProps>(
+  (props, ref) => {
+    const { id, name, value, placeholder, error, onChange, className } = props;
+    const errorId = `${id}-error`;
 
-  return (
-    <div>
-      {props.as === 'textarea' ? (
-        <textarea
-          id={id}
-          name={name}
-          value={value}
-          onChange={onChange}
-          ref={props.inputRef}
-          rows={props.rows ?? 5}
-          placeholder={placeholder}
-          className={className}
-          aria-invalid={Boolean(error)}
-          aria-describedby={error ? errorId : undefined}
-        />
-      ) : (
-        <input
-          id={id}
-          name={name}
-          type={props.type ?? 'text'}
-          value={value}
-          onChange={onChange}
-          ref={props.inputRef}
-          placeholder={placeholder}
-          className={className}
-          aria-invalid={Boolean(error)}
-          aria-describedby={error ? errorId : undefined}
-        />
-      )}
+    return (
+      <div>
+        {props.as === 'textarea' ? (
+          <textarea
+            id={id}
+            name={name}
+            value={value}
+            onChange={onChange}
+            ref={ref as React.Ref<HTMLTextAreaElement>}
+            rows={props.rows ?? 5}
+            placeholder={placeholder}
+            className={className}
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? errorId : undefined}
+          />
+        ) : (
+          <input
+            id={id}
+            name={name}
+            type={props.type ?? 'text'}
+            value={value}
+            onChange={onChange}
+            ref={ref as React.Ref<HTMLInputElement>}
+            placeholder={placeholder}
+            className={className}
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? errorId : undefined}
+          />
+        )}
 
-      <ErrorMsg id={errorId} errorMsg={error} />
-    </div>
-  );
-}
+        <ErrorMsg id={errorId} errorMsg={error} />
+      </div>
+    );
+  }
+);
+
+FormField.displayName = 'FormField';
 
 export default FormField;

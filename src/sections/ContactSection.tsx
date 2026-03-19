@@ -39,7 +39,7 @@ function ContactSection() {
                 name="name"
                 value={values.name}
                 onChange={handleChange}
-                inputRef={nameRef}
+                ref={nameRef}
                 placeholder="Name"
                 error={errors.name}
                 className={INPUT_STYLES}
@@ -51,7 +51,7 @@ function ContactSection() {
                 type="email"
                 value={values.email}
                 onChange={handleChange}
-                inputRef={emailRef}
+                ref={emailRef}
                 placeholder="E-mail"
                 error={errors.email}
                 className={INPUT_STYLES}
@@ -65,7 +65,7 @@ function ContactSection() {
                 type="tel"
                 value={values.phone}
                 onChange={handleChange}
-                inputRef={phoneRef}
+                ref={phoneRef}
                 placeholder="Contact Number"
                 error={errors.phone}
                 className={INPUT_STYLES}
@@ -79,7 +79,7 @@ function ContactSection() {
                 name="message"
                 value={values.message}
                 onChange={handleChange}
-                inputRef={messageRef}
+                ref={messageRef}
                 placeholder="Message"
                 error={errors.message}
                 className={TEXTAREA_STYLES}
