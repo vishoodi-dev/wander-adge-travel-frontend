@@ -1,17 +1,20 @@
 type ErrorMsgProps = {
   errorMsg?: string;
+  id?: string;
 };
 
-const ErrorMsg = ({ errorMsg }: ErrorMsgProps) => {
-  if (!errorMsg) return null;
-
+function ErrorMsg({ errorMsg, id }: ErrorMsgProps) {
   return (
-    <div className="mt-1 text-start">
-        <p className="mt-1 text-sm text-red-600">
-      {errorMsg}
-    </p></div>
-    
+    <div className="text-start mt-1">
+      <p
+        id={id}
+        className="mt-1 min-h-[20px] text-sm text-red-600"
+        role={errorMsg ? 'alert' : undefined}
+      >
+        {errorMsg ?? ''}
+      </p>
+    </div>
   );
-};
+}
 
 export default ErrorMsg;
