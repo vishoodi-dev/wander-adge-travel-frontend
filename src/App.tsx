@@ -1,15 +1,5 @@
-import './App.css';
+import AppRoutes from "./routes/AppRoutes";
 
-function App() {
-
-  return (
-    <>
-
-      <div className="ticks">
-        WanderEdge: Adventure on the Horizon
-      </div>
-    </>
-  );
+export default function App() {
+  return <AppRoutes />;
 }
-
-export default App;
