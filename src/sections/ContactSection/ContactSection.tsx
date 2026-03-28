@@ -1,12 +1,13 @@
-import SocialMediaBtn from '../componets/layout/SocialMediaBtn';
-import logo from '../assets/logo.png';
-import ConactDetailsSection from './ConactDetailsSection';
-import { useContactForm } from '../hooks/useContactForm';
-import FormField from '../componets/ui/FormField';
+import SocialMediaBtn from '../../componets/layout/SocialMediaBtn';
+import logo from '../../assets/logo.png';
+import ConactDetailsSection from '../ConactDetailsSection';
+import { useContactForm } from '../../hooks/useContactForm';
+import FormField from '../../componets/ui/FormField';
+import { styles } from './ContactSection.styles';
 
-const INPUT_STYLES ='h-14 w-full rounded-xl border border-[#a8c1ad] bg-transparent px-4 text-[18px] outline-none placeholder:text-black/55 focus:border-[#6a9a72]';
+const INPUT_STYLES = styles.input_styles;
 
-const TEXTAREA_STYLES ='min-h-[150px] w-full rounded-2xl border border-[#a8c1ad] bg-transparent px-4 py-4 text-[18px]';
+const TEXTAREA_STYLES = styles.textarea_styles;
 
 function ContactSection() {
   const {
@@ -23,17 +24,17 @@ function ContactSection() {
   } = useContactForm();
 
   return (
-    <section id="contact" className="bg-[#f4f4f4] pb-10">
-      <div className="flex flex-col items-center justify-center gap-4 mb-5">
-        <img className="h-16 sm:h-20 md:h-24 lg:h-28" src={logo} />
+    <section className={styles.container}>
+      <div className={styles.social_media_container}>
+        <img className={styles.logo} src={logo} />
         <SocialMediaBtn />
       </div>
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:px-8">
+      <div className={styles.contact_form_container}>
         <ConactDetailsSection />
         <div>
-          <h2 className="text-5xl font-semibold tracking-tight text-black/85 text-start">Contact Us</h2>
+          <h2 className={styles.title}>Contact Us</h2>
           <form className="mt-6" onSubmit={handleSubmit}>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className={styles.input_group}>
                <FormField
                 id="name"
                 name="name"
@@ -89,7 +90,7 @@ function ContactSection() {
 
             
             {submitMessage && (
-              <p className="mt-4 text-sm text-black/70" role="status">
+              <p className={styles.submit_message} role="status">
                 {submitMessage}
               </p>
             )}
@@ -98,7 +99,7 @@ function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="min-w-[170px] rounded-xl bg-[#52b84f] px-8 py-3 text-[20px] font-medium uppercase tracking-wide text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                className={styles.submit_bt}
               >
                 {isSubmitting ? 'Sending...' : 'Send'}
               </button>

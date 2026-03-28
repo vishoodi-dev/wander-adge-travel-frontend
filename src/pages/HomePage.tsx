@@ -1,7 +1,7 @@
 import HeroSection from '../sections/HeroSection';
 import FeaturesSection from '../sections/FeatureSection';
 import PromoSection from '../sections/PromoSection';
-import ContactSection from '../sections/ContactSection';
+import ContactSection from '../sections/ContactSection/ContactSection';
 
 function HomePage() {
   return (
